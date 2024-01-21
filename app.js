@@ -1,34 +1,29 @@
+//express imports
 const express = require('express');
 const app = express();
 
+//body parser imports
+const parses = require('body-parser');
 
+//routing imports
+const adminRoutes = require('./routes/admin');
+const home = require('./routes/home');
+
+//Ways to parse the body of the request
+// app.use(parses.urlencoded({extended: false}));
 app.use(express.urlencoded({extended: false})); // parses the body of the request
-
-app.use('/add-product', (req, res) => {
-    res.send('<form action="/product" method="POST"><input type="text" name="productTitle"><button type="submit">Add</button></form>')
-}); 
-app.post('/product', (req, res) => {
-    console.log(req.body);
-    res.redirect('/');
-});
-
-app.use('/users', (req, res) => {
-    res.send('<h1>Users</h1>');
-    // console.log("In the uSers"); //Funneling through requests /usrs should be first then the '/' route
-});
-
-app.use('/',(req, res)=>{
-    res.send('<h1>HELLO</h1>');
-    // console.log('In the root');
-
-
-    // next(); // allows to move to the following middleware
-})
+// app.use(express.json())
 
 
 
-app.listen(3000);
 
+// importing routes through different directories
+app.use(adminRoutes); 
+app.use(home);
+
+
+
+app.listen(3000); // creates a server and listens to port 3000
 
 // http.createServer((req, res) => {
 //     const url = req.url;
