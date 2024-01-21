@@ -15,9 +15,14 @@ router.get('/',(req, res)=>{
     // console.log('In the root');
 
     console.log('Products::',adminData.products);
-    res.sendFile(path.join(rootDir, 'views', 'shop.html')); //works similarly to /views/shop.html
+    // res.sendFile(path.join(rootDir, 'views', 'shop.html')); //works similarly to /views/shop.html
+    let products = adminData.products;
+    res.render('shop',{
+        pageTitle: 'Shop',  
+        prods: products,
+        path: '/',
 
-    // res.render('shop');
+    });
 
 
 
