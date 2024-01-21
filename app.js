@@ -1,26 +1,37 @@
 //express imports
 const express = require('express');
 const app = express();
+const path = require('path');
 
 //body parser imports
-const parses = require('body-parser');
+const parses = require('body-parser'); //not used anymore
 
 //routing imports
 const adminRoutes = require('./routes/admin');
 const home = require('./routes/home');
 
-//Ways to parse the body of the request
+// Utils Import
+const rootDir = require('./utils/path');
+
+//-----Ways to parse the body of the request-----
 // app.use(parses.urlencoded({extended: false}));
-app.use(express.urlencoded({extended: false})); // parses the body of the request
+app.use(express.urlencoded({extended: false}));
 // app.use(express.json())
+// -------
 
 
 
 
 // importing routes through different directories
-app.use(adminRoutes); 
+app.use('/admin',adminRoutes); 
 app.use(home);
 
+
+// adding 404 error page
+app.use((req, res, next) => {
+    //res.status(404).send('<h1>Page not found</h1>');
+    res.status(404).sendFile(path.join(rootDir,'views','404.html')); //This doesnt need ../ as it is already in the root directory
+});
 
 
 app.listen(3000); // creates a server and listens to port 3000

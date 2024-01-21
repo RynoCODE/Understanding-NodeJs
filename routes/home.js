@@ -1,5 +1,8 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
+
+const rootDir = require('../utils/path');
 
 router.get('/users', (req, res) => {
     res.send('<h1>Users</h1>');
@@ -7,9 +10,9 @@ router.get('/users', (req, res) => {
 });
 
 router.get('/',(req, res)=>{
-    res.send('<h1>HELLO</h1>');
+    // res.send('<h1>HELLO</h1>');
     // console.log('In the root');
-
+    res.sendFile(path.join(rootDir, 'views', 'shop.html')); //works similarly to /views/shop.html
 
     // next(); // allows to move to the following middleware
 })
