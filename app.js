@@ -13,6 +13,10 @@ const home = require('./routes/home');
 // Utils Import
 const rootDir = require('./utils/path');
 
+// Static files
+app.use(express.static(path.join(__dirname,'public'))); // This is used to serve static files like css, js, images etc.
+
+
 //-----Ways to parse the body of the request-----
 // app.use(parses.urlencoded({extended: false}));
 app.use(express.urlencoded({extended: false}));
