@@ -17,6 +17,6 @@ Clone this repository to your local machine and explore the code snippets to see
 
 ## License
 
-This repository is licensed under the [MIT License](LICENSE). Feel free to use the code and resources for your own learning purposes.
+This repository is licensed under the MIT License. Feel free to use the code and resources for your own learning purposes.
 
 Happy coding!
