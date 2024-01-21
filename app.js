@@ -16,6 +16,9 @@ const rootDir = require('./utils/path');
 // Static files
 app.use(express.static(path.join(__dirname,'public'))); // This is used to serve static files like css, js, images etc.
 
+// Dynamic HTML
+// app.set('view engine','pug'); // This is used to set the view engine to pug
+app.set('views','views'); // This is used to set the views folder to views
 
 //-----Ways to parse the body of the request-----
 // app.use(parses.urlencoded({extended: false}));
@@ -27,7 +30,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 // importing routes through different directories
-app.use('/admin',adminRoutes); 
+app.use('/admin',adminRoutes.routes); 
 app.use(home);
 
 
