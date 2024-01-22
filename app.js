@@ -26,6 +26,8 @@ app.use(express.urlencoded({extended: false}));
 // app.use(express.json())
 // -------
 
+//controller imports
+const errorController = require('./controllers/error');
 
 
 
@@ -35,13 +37,7 @@ app.use(home);
 
 
 // adding 404 error page
-app.use((req, res, next) => {
-    //res.status(404).send('<h1>Page not found</h1>');
-    // res.status(404).sendFile(path.join(rootDir,'views','404.html')); //This doesnt need ../ as it is already in the root directory
-    
-    res.status(404).render('404',{pageTitle: "Didn't find the page"});
-
-});
+app.use(errorController.get404);
 
 
 app.listen(3000); // creates a server and listens to port 3000
