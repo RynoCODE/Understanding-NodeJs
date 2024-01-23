@@ -12,7 +12,7 @@ router.get('/users', (req, res) => {
     // console.log("In the uSers"); //Funneling through requests /usrs should be first then the '/' route
 });
 
-router.get('/',productsController.getProduct);
+router.get('/',productsController.getProducts);
 
 
 
